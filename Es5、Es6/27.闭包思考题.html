@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    //思考题1
+    //没有闭包产生
+    //    var name = 'The Window';
+    //    var object = {
+    //        name:'My object',
+    //        getNameFunc:function(){
+    //            return function(){
+    //                return this.name;
+    //            }
+    //        }
+    //    }
+    //    console.log(object.getNameFunc()());    //'The window'
+    //相当于 f = object.getNameFunc()
+    // f =  function(){
+    //  return this.name;  //此时的this指向window
+    //}
+    //f()
+
+
+    //思考题2
+    var name = 'The Window';
+    var object = {
+        name: 'The object',
+        getNameFunc: function () {
+            var that = this;  //此时的this指向调用者object
+            return function () {
+                return that.name;
+            }
+        }
+    }
+
+    console.log(object.getNameFunc()());
+    //相当于
+    //var f = object.getNameFun()
+    // f = function(){
+    //     return that.name
+    // }
+    // f()
+
+</script>
+
+</html>

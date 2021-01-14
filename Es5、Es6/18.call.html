@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //js提供了三种方法 call,bind,apply
+
+    //1.call方法
+    var o = {
+        name:'John'
+    };
+    function fn (a,b){
+        console.log(this);
+        console.log(a+b)
+    };
+
+    fn.call(o,1,3);
+    //call 第一个可以调用函数，第二个可以改变this指向
+    //call的主要作用可以实现传承
+
+    function Father(name,age){
+        this.name = name;
+        this.age = age;
+    }
+
+    function Son(name,age){
+        Father.call(this,name,age)
+    }
+    var ldh = new Son('刘德华',15);
+    console.log(ldh)
+
+</script>
+</html>

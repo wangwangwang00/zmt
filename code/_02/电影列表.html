@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(){
+                super();
+                this.state = {
+                    msg:'hello world!',
+                    movieList:["111","222","333","444"]
+
+                };
+                
+            }
+            render(){
+                const arrList = [];
+                for(let movie of this.state.movieList){
+                    arrList.push(<li>{movie}</li>)
+                }
+                
+                return(
+                    <div>
+                        <h2>电影列表1</h2>
+                       <ul>
+                           {arrList}
+                       </ul>
+                       <h2>电影列表2</h2>
+                       <ul>
+                       {this.state.movieList.map((item) =>{
+                        return <li>{item}</li>
+                       })}
+                       </ul>
+                    </div>
+                )    
+                
+            }
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    //高阶函数---函数作为参数传递
+    function fn(a, b, callback) {
+        console.log(a + b);
+        callback && callback()
+    }
+    fn(2, 5, function () {
+        console.log('last')
+    })
+
+    $('div').animate({
+        "height": "300px"
+    }, function () {
+        $('div').css('backgroundColor', "#ff0")
+    })
+</script>
+
+
+</html>

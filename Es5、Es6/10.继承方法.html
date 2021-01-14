@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Father(name, age) {
+        //this指向父构造函数的实例对象
+        this.name = name;
+        this.age = age;
+    }
+    Father.prototype.money = function () {
+        console.log('父构造函数方法')
+    }
+    // Son.prototype = Father.prototype; //这样赋值，如果修改了子原型对象，父原型对象也会跟着变化
+
+
+    function Son(name, age, score) {
+        //this指向子构造函数的实例对象
+        Father.call(this, name, age);
+        this.score = score;
+        
+    }
+    Son.prototype = new Father();   //解决方法
+    //如果利用对象的形式修改了原型对象，别忘了利用constructor指回原来的构造函数
+    Son.prototype.constructor = Son;
+    console.log(Son.prototype.constructor);
+
+    
+    Son.prototype.exam = function () { 
+        console.log('子构造函数方法');
+     }
+    
+
+    var son = new Son('刘德华', 18, 100);
+    console.log(son)
+    console.log(Father.prototype)
+   
+</script>
+
+</html>

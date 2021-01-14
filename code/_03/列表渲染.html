@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(){
+                super();
+                this.state = {
+                    list:[22,34,56,3,45,234,987]
+                }
+            }
+            render(){
+                //方法一
+                const {list} = this.state;
+                //数组过滤
+                const newList = list.filter((item,index,arr) =>{
+                    return item % 2 !== 0;
+                })
+                return(
+                    <div>
+                       <h2>列表展示1（过滤）</h2>
+                       <ul>
+                            {
+                                newList.map((item) =>{
+                                    return <li>{item}</li>
+                                })
+                            }
+                        </ul>
+
+                        <h2>列表展示2（过滤）</h2>
+                        {
+                            list.filter(item =>{
+                                return item >= 50;
+                            }).map(item =>{
+                                return <li>{item}</li>
+                            })
+                        }
+ 
+                        <h2>代码优化</h2>
+                        {
+                            list.filter(item => item >= 50).map(item => <li>{item}</li>)
+                        }
+
+                        <h2>数组列表截取</h2>
+                        {
+                            list.slice(0,4).map(item => <li>{item}</li>)
+                        }
+                    </div>
+                )    
+                
+            }
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

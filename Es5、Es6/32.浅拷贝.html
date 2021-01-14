@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {
+        name:'John',
+        sex:'男',
+        msg:{
+            age:18
+        }
+    }
+    var o = {};
+
+    // for(var k in obj){
+    //     o[k] = obj[k];
+    // }
+    // console.log(o);
+    // obj.msg.age = 20;
+    // console.log(o)
+
+    Object.assign(o,obj);
+    obj.msg.age = 20;
+    console.log(o)
+</script>
+</html>

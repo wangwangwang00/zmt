@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+
+                }
+
+            }
+            // render() {
+            //    let reactObj =  <div>
+            //             <div className="header">
+            //                 <h1>我是标题</h1>
+            //                 <hr />
+            //             </div>
+            //             <div className="content">
+            //                 <h2>我是内容</h2>
+            //                 <button>点击</button>
+            //                 <a href="http://www.baidu.com">百度一下</a>
+            //                 <hr />
+            //             </div>
+            //             <div className="footer">
+            //                 我是尾部
+            //            </div>
+            //         </div>
+            //     console.log(reactObj);
+            //     return reactObj
+
+            // }
+            render() {
+                /*#__PURE__*/
+              let reactObj = React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+                    className: "header"
+                }, /*#__PURE__*/React.createElement("h1", null, "\u6211\u662F\u6807\u9898"), /*#__PURE__*/React.createElement("hr", null)), /*#__PURE__*/React.createElement("div", {
+                    className: "content"
+                }, /*#__PURE__*/React.createElement("h2", null, "\u6211\u662F\u5185\u5BB9"), /*#__PURE__*/React.createElement("button", null, "\u70B9\u51FB"), /*#__PURE__*/React.createElement("a", {
+                    href: "http://www.baidu.com"
+                }, "\u767E\u5EA6\u4E00\u4E0B"), /*#__PURE__*/React.createElement("hr", null)), /*#__PURE__*/React.createElement("div", {
+                    className: "footer"
+                }, "\u6211\u662F\u5C3E\u90E8"));
+                console.log(reactObj)
+                return reactObj;
+            }
+        }
+        ReactDOM.render(<App />, document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

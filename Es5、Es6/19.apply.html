@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //js提供了三种方法 call,bind,apply
+
+    //2.apply方法
+    var o = {
+        name:'John'
+    };
+    function fn (arr){
+        console.log(this);
+        console.log(arr);
+    };
+
+    fn.apply(o,['1,3,34,67,32']);
+
+    //apply 第一个可以调用函数，第二个可以改变this指向
+    //apply的参数必须是数组(伪数组)
+    //apply的主要应用 比如说可以利用apply借助于数学内置对象求最大值
+
+   var arr = [1,3,34,67,32];
+   var max = Math.max.apply(null,arr);
+   var min = Math.min.apply(Math,arr);
+   console.log(max,min);
+
+</script>
+</html>

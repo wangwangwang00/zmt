@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //ES5继承
+
+    // 1.call方法
+    function fn(x,y) {
+        console.log(this);
+        console.log(333);
+        console.log(x + y);
+    }
+    var o = {
+        name:'John'
+    }
+    // fn();
+
+    //1.call可以调用函数
+    // fn.call()
+
+
+    //2.call可以改变函数的this指向,此时函数指向o
+    fn.call(o,3,5)
+
+
+</script>
+
+</html>

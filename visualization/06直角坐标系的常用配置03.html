@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- 1.引入echarts.js -->
+  <script src="lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 2.准备呈现图标的盒子 -->
+  <div style="width: 600px; height: 400px"></div>
+</body>
+<script>
+  // 3.初始化echarts实例对象
+  var myCharts = echarts.init(document.querySelector("div"));
+  var xDataArr = ["小明", "小红", "小王", "小张", "John", "Mary"];
+  var yDataArr = [70, 40, 50, 88, 98, 30];
+  // 4.准备配置项
+  var option = {
+    dataZoom: [{
+      type: 'inside', //inside,slider
+      xAxisIndex:0,
+    },{
+      type:'slider',
+      yAxisIndex:0,
+      start:0,
+      end:80
+    }
+    ],
+    toolbox: {
+      feature: {
+        dataZoom: {}
+      }
+    },
+    xAxis: {
+      type: "category", //类目轴
+      data: xDataArr,
+
+    },
+    yAxis: {
+      type: "value", //数值轴
+
+    },
+    series: [
+      {
+        type: "bar",
+        name: "语文",
+        markPoint: {
+          data: [
+            {
+              type: 'max', name: '最大值'
+            }, {
+              type: 'min', name: '最小值'
+            }
+          ],
+        },
+        markLine: {
+          data: [{
+            type: 'average', name: '平均值'
+          }]
+        },
+        label: {
+          show: true,
+          rotate: 40,
+          position: 'inside'
+        },
+        barWidth: '30%',
+        data: yDataArr
+      },
+    ],
+  };
+  // 5.将配置项给echarts实例
+  myCharts.setOption(option);
+</script>
+
+</html>

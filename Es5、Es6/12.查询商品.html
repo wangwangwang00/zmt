@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            width: 1000px;
+            margin: 0 auto;
+            height: 50px;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .content table {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <span>按照价格查询：</span>
+        <input type="text" class="start" /> - <input type="text" class="end" />
+        <button class="searchPrice">搜索</button>
+        <span>按照商品名称查询：</span>
+        <input type="text" class="goodsName">
+        <button class="searchName">查询</button>
+    </div>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>商品名称</th>
+                    <th>价格</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    var arr = [{
+        id: '1',
+        name: '小米',
+        price: 999
+    }, {
+        id: '2',
+        name: '华为',
+        price: 1838
+    }, {
+        id: '3',
+        name: '苹果',
+        price: 3999
+    }, {
+        id: '4',
+        name: 'OPPO',
+        price: 677
+    }];
+
+
+    var table = document.querySelector('table tbody');
+    setData(arr);
+    //1.渲染表格
+    function setData(data) {
+        table.innerHTML = '';
+        data.forEach((function (value) {
+            // var str = '<tr><td>'+value.id+'</td><td>'+value.name+'</td><td>'+value.price+'</td></tr>'
+            // table.insertAdjacentElement('beforeend',str);
+
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + value.id + '</td><td>' + value.name + '</td><td>' + value.price + '</td>'
+            table.appendChild(tr);
+
+        }))
+    }
+
+    //2.根据价格进行查询
+    var searchPriceBtn = document.querySelector('.searchPrice');
+    var start = document.querySelector('.start');
+    var end = document.querySelector('.end');
+
+    searchPriceBtn.onclick = function () {
+        var newArr = arr.filter((function (value) {
+            return value.price >= start.value && value.price <= end.value;
+        }))
+        console.log(newArr);
+        //把筛选后的数据放到表格里面
+        setData(newArr);
+    }
+
+    //3.根据商品名称获取数据
+    var searchNameBtn = document.querySelector('.searchName');
+    var searchName = document.querySelector('.goodsName');
+    
+    searchNameBtn.onclick = function () {
+        var data = [];
+        arr.some((function (value) {
+            if (value.name == searchName.value) {
+                data.push(value);
+                return true;
+            }
+        }))
+        setData(data);
+    }
+
+
+
+</script>
+
+</html>

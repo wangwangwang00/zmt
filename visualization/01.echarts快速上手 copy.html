@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入echarts.js -->
+    <script src="lib/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 2.准备呈现图标的盒子 -->
+    <div style="width: 600px;height: 400px;"></div>
+</body>
+<script>
+    // 3.初始化echarts实例对象
+    var myCharts = echarts.init(document.querySelector('div'));
+
+    // 4.准备配置项
+    var option = {
+        xAxis: {
+            type: 'category', //类目轴
+            data: ['小明', '小红', '小王']
+        },
+        yAxis: {
+            type: 'value'  //数值轴
+        },
+        series: [{
+            data: [70, 100, 50],
+            type: 'bar',
+            name:'语文',
+        }]
+    };
+    // 5.将配置项给echarts实例
+    myCharts.setOption(option);
+</script>
+
+</html>

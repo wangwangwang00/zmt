@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 1.引入echarts.js -->
+    <script src="lib/echarts.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 2.准备呈现图标的盒子 -->
+    <div style="width: 600px; height: 400px"></div>
+  </body>
+  <script>
+    // 3.初始化echarts实例对象
+    var myCharts = echarts.init(document.querySelector("div"));
+    var xDataArr = ["小明", "小红", "小王", "小张", "John", "Mary"];
+    var yDataArr1 = [70, 40, 50, 88, 98, 30];
+    var yDataArr2 = [40, 46, 75, 98, 28, 70];
+    // 4.准备配置项
+    var option = {
+      title:{
+        text:'成绩展示',
+        textStyle:{
+          color:'#f00'
+        },
+        borderWidth:5,
+        borderColor:'blue',
+        borderRadius:5,
+        left:50,
+        top:10,
+      },
+      tooltip:{
+        // trigger:'item'
+        trigger:'axis',
+        triggerOn:'click',
+        // formatter:'{b}的成绩是{c}'
+        formatter:function(arg){
+          return arg[0].name + '的成绩是' + arg[0].value
+        }
+      },
+      toolbox:{
+        feature:{
+          saveAsImage:{},  //导出图片
+          dataView:{}, //数据视图
+          restore:{}, //重置
+          dataZoom:{}, //区域缩放
+          magicType:{
+            type:['bar','line']
+          }, //动态图标类型切换
+        }
+      },
+      xAxis: {
+        type: "category", //类目轴
+        data: xDataArr,
+      },
+      yAxis: {
+        type: "value", //数值轴
+      },
+      legend:{
+        data:['语文','数学'], //和series里面的name保持一致
+      },
+      series: [
+        {
+          type: "bar",
+          name: "语文",
+          markPoint: {
+            data: [
+              {
+                type:'max',name:'最大值'
+              },{
+                  type:'min',name:'最小值'
+              }
+            ],
+          },
+          markLine:{
+            data:[{
+                type:'average',name:'平均值'
+            }]
+          },
+          label:{
+            show:true,
+            rotate:40,
+            position:'inside'
+          },
+          barWidth:'30%',
+          data:yDataArr1
+        },
+        {
+          type: "bar",
+          name: "数学",
+          markPoint: {
+            data: [
+              {
+                type:'max',name:'最大值'
+              },{
+                  type:'min',name:'最小值'
+              }
+            ],
+          },
+          markLine:{
+            data:[{
+                type:'average',name:'平均值'
+            }]
+          },
+          label:{
+            show:true,
+            rotate:40,
+            position:'inside'
+          },
+          barWidth:'30%',
+          data:yDataArr2
+        },
+      ],
+    };
+    // 5.将配置项给echarts实例
+    myCharts.setOption(option);
+  </script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1. Object.keys
+
+    // var obj= {
+    //     name:'小米',
+    //     id:'1',
+    //     price:1000
+    // };
+    // var newArr = Object.keys(obj);
+    // console.log(newArr)
+
+    //2.Object.defineProperty()
+    var obj= {
+        name:'小米',
+        id:'1',
+        price:1000
+    };
+    Object.defineProperty(obj,'number',{
+        value:700,
+        
+    });
+    Object.defineProperty(obj,'price',{
+        value:9.9
+    });
+    Object.defineProperty(obj,'id',{
+        writable:false
+    });
+    obj.id= '2';
+    console.log(obj);
+
+</script>
+</html>

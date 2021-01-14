@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+</body>
+<script>
+    // 1.普通函数
+    function fn(params) {
+        console.log(this);  //window
+    }
+    fn(); fn.call();   
+
+    //2.对象的方法
+    var o = {
+        sing:function(){
+            console.log(this);  //o
+        }
+    }
+    o.sing();
+
+    //3.构造函数
+    function Star(){}
+    var ldh = new Star();
+
+    //4.绑定事件函数  //指向函数的调用者btn
+    var btn = document.querySelector('button');
+    btn.onclick = function () { };
+
+    //5.定时器函数  //指向window
+    setInterval(function(){},1000);  //定时器1秒调用1次
+
+    //6.立即执行函数（自调用） //指向window
+    (function(){
+        console.log(4444)
+    })()
+    
+
+</script>
+</html>

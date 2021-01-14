@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- 1.引入echarts.js -->
+  <script src="lib/echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 2.准备呈现图标的盒子 -->
+  <div style="width: 600px; height: 400px"></div>
+</body>
+<script>
+  // 3.初始化echarts实例对象
+  var myCharts = echarts.init(document.querySelector("div"));
+  var xDataArr = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+  var yDataArr = [3000, 2800, 3678, 5689, 2600, 1400, 700, 600, 900, 3400, 2000, 1234];
+  // 4.准备配置项
+  var option = {
+    xAxis: {
+      type: "category", //类目轴
+      data: xDataArr,
+    },
+    yAxis: {
+      type: "value", //数值轴
+    },
+    series: [
+      {
+        type: "line",
+        name: "康师傅销量",
+        data: yDataArr,
+        markPoint: {
+          data: [{
+            type: 'max', name: '最大值'
+          }, {
+            type: 'min', name: '最小值'
+          }]
+        },
+        markLine: {
+          data: [{
+            type: 'average', name: '平均值'
+          }]
+        },
+        markArea: {
+          data: [
+            [
+              {
+                xAxis: '1月'
+              },
+              {
+                xAxis: '2月'
+              }
+
+            ], [
+              {
+                xAxis: '7月'
+              },
+              {
+                xAxis: '9月'
+              }
+            ]
+          ]
+        },
+        smooth:true, //线条控制
+        lineStyle:{
+          color:'green',
+          type:'dotted', //solid,dotted,dashed
+        },
+        areaStyle:{
+          color:'pink'
+        }, //填充风格
+
+      },
+
+    ],
+  };
+  // 5.将配置项给echarts实例
+  myCharts.setOption(option);
+</script>
+
+</html>

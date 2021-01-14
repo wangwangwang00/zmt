@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        function getSizeImg(imgUrl,size) {
+            return imgUrl + `?param=${size}y${size}`
+        }
+        class App extends React.Component {
+            constructor(){
+                super();
+                this.state = {
+                    titleTip:'titleTip',
+                    imgUrl:'http://p1.music.126.net/9OEBbRq3NNo8QNUnfN7D2g==/109951165017733961.jpg',
+                    link:'http://www.baidu.com',
+                    active:true,
+                    size:"40px"
+                }
+                
+            }
+            render(){
+                const {titleTip,imgUrl,link,active,size} = this.state;
+                return(
+                    <div>
+                        {/*绑定普通属性*/}
+                        <h2 title={titleTip}>标题</h2>
+                        <img src={getSizeImg(imgUrl,140)} />
+                        <a href={link} target="_blank">百度一下</a>
+                      
+
+                        {/*绑定class属性*/}
+                        <div className={"box title " + (active ?'active' :'')}>我也是div元素</div>
+
+                        {/*绑定style属性---------fontSize驼峰*/}
+                        <div style={{color:"red",fontSize:size}}> 绑定style属性</div>
+
+                        {/*js关键字*/}
+                        <label htmlFor=""></label>
+                        <div className="box title">我是div元素</div>
+                    </div>
+                )    
+                
+            }
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

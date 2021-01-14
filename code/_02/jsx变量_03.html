@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(){
+                super();
+                this.state = {
+                    name:'lily',
+                    age:18,
+                    list:["111","222","333"],
+                    test1:null,
+                    test2:undefined,
+                    test3:false,
+                    obj:{
+                        name:'john',
+                        age:20
+                    }
+                }
+                
+            }
+            render(){
+                return(
+                    <div>
+                        {/*1、可以正常显示的变量*/}
+                      <h2>{this.state.name}</h2>
+                      <h2>{this.state.age}</h2>
+                      <h2>{this.state.list}</h2>
+                        {/*2、 
+                        不可以正常显示的变量
+                            1.可以转换的，使用toString()
+                            2.加 ""
+                        */}
+                      <h2>{this.state.test1 + ""}</h2> 
+                      <h2>{this.state.test2 + ""}</h2>
+                      <h2>{this.state.test3.toString()}</h2>
+
+                      {/*3、 报错*/}
+                      <h2>{this.state.obj}</h2>  
+
+                    </div>
+                )    
+                
+            }
+        }
+        ReactDOM.render(<App/>,document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

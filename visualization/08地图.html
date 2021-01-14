@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入echarts.js -->
+    <script src="lib/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 2.准备呈现图标的盒子 -->
+    <div style="width: 600px;height: 400px;"></div>
+</body>
+<script>
+    // 3.初始化echarts实例对象
+    var myCharts = echarts.init(document.querySelector('div'));
+    var pieData = [
+        { value: 3235, name: '淘宝' },
+        { value: 7310, name: '京东' },
+        { value: 24535, name: '唯品会' },
+        { value: 1400, name: '一号店' },
+        { value: 400, name: '聚美优品' },
+    ];
+    // 4.准备配置项
+    var option = {
+        series:[{
+            type:'pie',
+            data:pieData
+        }]
+    };
+    // 5.将配置项给echarts实例
+    myCharts.setOption(option);
+</script>
+
+</html>
